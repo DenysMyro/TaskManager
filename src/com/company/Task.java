@@ -12,21 +12,34 @@ public class Task {
 
 	/*Constructors*/
 
-    public Task (String title, int time, boolean active) {
-        this.taskTitle = title;
-        this.taskTime = time;
-        isActive = active;
-        isRepeatable = false;
+    public Task (String title, int time, boolean active){
+            try {
+                if (time<0)
+                throw new NegativeTimeValueException();
+
+                this.taskTitle = title;
+                this.taskTime = time;
+                isActive = active;
+                isRepeatable = false;
+            } catch (NegativeTimeValueException e) {
+                System.out.println(title+" is not created");
+            }
     }
 
     public Task (String title, int start, int end, int interval,  boolean active) {
-        this.taskTitle = title;
-        this.taskStartTime = start;
-        this.taskEndTime = end;
-        this.taskTimeInterval = interval;
-        isActive = active;
-        isRepeatable = true;
+        try {
+            if (start < 0 || end < 0 || interval < 0)
+                throw new NegativeTimeValueException();
 
+            this.taskTitle = title;
+            this.taskStartTime = start;
+            this.taskEndTime = end;
+            this.taskTimeInterval = interval;
+            isActive = active;
+            isRepeatable = true;
+        } catch (NegativeTimeValueException e) {
+            System.out.println(title+" is not created");
+        }
     }
 	
 	/*Getters&Setters*/
@@ -48,8 +61,13 @@ public class Task {
     }
 
     public void setTime (int time) {
-        taskTime = time;
-        isRepeatable = false;
+        try {
+            if (time<0)
+                throw new NegativeTimeValueException(this.getTitle());
+            taskTime = time;
+            isRepeatable = false;
+        } catch (NegativeTimeValueException e){}
+
     }
 
     public int getStartTime () {
@@ -78,10 +96,15 @@ public class Task {
 
 
     public void setTime (int start, int end, int interval) {
-        taskStartTime = start;
-        taskEndTime = end;
-        taskTimeInterval = interval;
-        isRepeatable = true;
+        try {
+            if (start < 0 || end < 0 || interval < 0)
+                throw new NegativeTimeValueException(this.getTitle());
+
+            taskStartTime = start;
+            taskEndTime = end;
+            taskTimeInterval = interval;
+            isRepeatable = true;
+        } catch (NegativeTimeValueException e){}
     }
 
     public boolean isRepeated () {

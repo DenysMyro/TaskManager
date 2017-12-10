@@ -1,15 +1,19 @@
 package com.company;
 
-import java.util.Arrays;
-
 public class ArrayTaskList {
 
     private Task[] tasklist = new Task[5];
     int size = 0;
 
     public void add(Task task) {
+//        if (task==null)
+//            try {
+//                throw new TaskIsNullException();
+//            } catch (TaskIsNullException taskIsNullException) {
+//                taskIsNullException.printStackTrace();
+//            }
         if (size >= tasklist.length) {
-            Task tempList[] = new Task[tasklist.length + 5];
+            Task tempList[] = new Task[(int) (tasklist.length +tasklist.length*0.5)];
             for (int i = 0; i < tasklist.length; i++) {
                 tempList[i] = tasklist[i];
             }
