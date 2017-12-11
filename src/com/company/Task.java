@@ -2,13 +2,13 @@ package com.company;
 
 public class Task {
 
-    String taskTitle;
-    int taskTime;
-    int taskStartTime;
-    int taskEndTime;
-    int taskTimeInterval;
-    boolean isRepeatable;
-    boolean isActive;
+    private String taskTitle;
+    private int taskTime;
+    private int taskStartTime;
+    private int taskEndTime;
+    private int taskTimeInterval;
+    private boolean isRepeatable;
+    private boolean isActive;
 
 	/*Constructors*/
 

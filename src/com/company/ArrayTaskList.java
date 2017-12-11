@@ -3,17 +3,15 @@ package com.company;
 public class ArrayTaskList {
 
     private Task[] tasklist = new Task[5];
-    int size = 0;
+    private int size = 0;
 
     public void add(Task task) {
-//        if (task==null)
-//            try {
-//                throw new TaskIsNullException();
-//            } catch (TaskIsNullException taskIsNullException) {
-//                taskIsNullException.printStackTrace();
-//            }
+        if (task == null) {
+            throw new NullPointerException("Task can't be null");
+        }
+
         if (size >= tasklist.length) {
-            Task tempList[] = new Task[(int) (tasklist.length +tasklist.length*0.5)];
+            Task tempList[] = new Task[(int) (tasklist.length + tasklist.length * 0.5)];
             for (int i = 0; i < tasklist.length; i++) {
                 tempList[i] = tasklist[i];
             }
@@ -45,30 +43,34 @@ public class ArrayTaskList {
     }
 
     public Task getTask(int index) {
-        if (index > tasklist.length)
-            return null;
-        else
-            return tasklist[index];
+        if (index > tasklist.length) {
+            throw new IndexOutOfBoundsException("No task found with index: " + index);
+        }
+        return tasklist[index];
     }
 
-    public ArrayTaskList incoming (int from, int to) {
+    public ArrayTaskList incoming(int from, int to) {
         ArrayTaskList incoming = new ArrayTaskList();
         for (Task listItem : tasklist) {
-            if (listItem != null&&listItem.isActive) {
-                    if (listItem.nextTimeAfter(from)<=to&&listItem.nextTimeAfter(from)!=-1) {
-                        incoming.add(listItem); 
+            if (listItem != null && listItem.isActive()) {
+                if (listItem.nextTimeAfter(from) <= to && listItem.nextTimeAfter(from) != -1) {
+                    incoming.add(listItem);
                 }
             }
-        }   
+        }
         return incoming;
+    }
+
+    public int arraysize() {
+        return tasklist.length;
     }
 
     @Override
     public String toString() {
         String temp = "";
-        for(int i=0;i<size;i++){
+        for (int i = 0; i < size; i++) {
 
-            temp += tasklist[i].toString()+" ";
+            temp += tasklist[i].toString() + " ";
         }
         return temp;
     }
