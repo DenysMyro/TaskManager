@@ -1,6 +1,6 @@
 package com.company;
 
-public class ArrayTaskList {
+public class ArrayTaskList extends TaskList {
 
     private Task[] tasklist = new Task[5];
     private int size = 0;
