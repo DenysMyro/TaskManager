@@ -1,6 +1,6 @@
 package com.company;
 
-public class NegativeTimeValueException extends Throwable {
+public class NegativeTimeValueException extends RuntimeException {
 
     private String message = "Time value cannot be negative";
     public NegativeTimeValueException() {
