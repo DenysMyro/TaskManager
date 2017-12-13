@@ -11,7 +11,8 @@ public class Main {
         Task task5 = new Task("task5", 0, 55, 22, true);
         Task task6 = new Task("task6", 0, 60, 30, true);
 //
-        ArrayTaskList list = new ArrayTaskList();
+//        ArrayTaskList list = new ArrayTaskList();
+        LinkedTaskList list = new LinkedTaskList();
 
         list.add(task1);
         list.add(task2);
