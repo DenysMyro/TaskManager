@@ -10,6 +10,6 @@ public abstract class TaskList {
 
     public abstract int size();
 
-    public abstract TaskList incoming (int from, int to);
+    public abstract TaskList incoming(int from, int to);
 
 }

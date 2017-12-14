@@ -24,6 +24,17 @@ public class Main {
 
         System.out.println(list);
 
+//        System.out.println("remove status: "+list.remove(task2));
+
+//        System.out.println(list);
+//        System.out.println("remove status: "+list.remove(task2));
+
+//        System.out.println(list.getTask(1));
+
+
+//        System.out.println(list.getHead().getNext());
+//        System.out.println(list.getTail().getPrevious());
+
 
 //        task1.setTime(-1);
 //        task4.setTime(-1, -1, -1);
@@ -35,7 +46,7 @@ public class Main {
 //
 //        System.out.println(list);
 //
-//        System.out.println("upcoming: " + list.incoming(50, 60));
+        System.out.println("upcoming: " + list.incoming(50, 60));
 //        System.out.println(task1);
     }
 }

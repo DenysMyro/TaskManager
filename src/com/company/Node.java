@@ -39,6 +39,10 @@ public class Node {
         this.next = node;
     }
 
+    public void setPrevious(Node previous) {
+        this.previous = previous;
+    }
+
     public void addTask(Task task) {
         this.storedTask = task;
     }
