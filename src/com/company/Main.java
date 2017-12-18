@@ -23,6 +23,7 @@ public class Main {
 //        list.add(null);
 
         System.out.println(list);
+        System.out.println(list.getTask(2));
 
 //        System.out.println("remove status: "+list.remove(task2));
 

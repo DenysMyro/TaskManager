@@ -8,19 +8,19 @@ public class LinkedTaskList extends TaskList {
     private Node tail;
     private int size;
 
-    public Node getHead() {
+    private Node getHead() {
         return head;
     }
 
-    public void setHead(Node head) {
+    private void setHead(Node head) {
         this.head = head;
     }
 
-    public Node getTail() {
+    private Node getTail() {
         return tail;
     }
 
-    public void setTail(Node tail) {
+    private void setTail(Node tail) {
         this.tail = tail;
     }
 
@@ -93,7 +93,7 @@ public class LinkedTaskList extends TaskList {
             throw new NoSuchElementException();
         } else {
             Node tpm = head;
-            for (int i = 1; i < index; i++) {
+            for (int i = 0; i < index; i++) {
                 tpm = tpm.getNext();
             }
             return tpm.getStoredTask();
@@ -110,7 +110,7 @@ public class LinkedTaskList extends TaskList {
         LinkedTaskList incoming = new LinkedTaskList();
         Node tmp = head;
         while (tmp != null) {
-            if (tmp.getStoredTask().nextTimeAfter(from) <= to && tmp.getStoredTask().nextTimeAfter(from) != -1) {
+            if (tmp.getStoredTask().isActive()&&tmp.getStoredTask().nextTimeAfter(from) <= to && tmp.getStoredTask().nextTimeAfter(from) != -1) {
                 incoming.add(tmp.getStoredTask());
             }
             tmp = tmp.getNext();
