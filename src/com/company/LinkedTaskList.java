@@ -112,7 +112,7 @@ public class LinkedTaskList extends TaskList {
         LinkedTaskList incoming = new LinkedTaskList();
         Node tmp = head;
         while (tmp != null) {
-            if (tmp.getStoredTask().isActive()&&tmp.getStoredTask().nextTimeAfter(from) <= to && tmp.getStoredTask().nextTimeAfter(from) != -1) {
+            if (tmp.getStoredTask().isActive() && tmp.getStoredTask().nextTimeAfter(from) <= to && tmp.getStoredTask().nextTimeAfter(from) != -1) {
                 incoming.add(tmp.getStoredTask());
             }
             tmp = tmp.getNext();
@@ -142,17 +142,26 @@ public class LinkedTaskList extends TaskList {
 
             @Override
             public boolean hasNext() {
-                return current!=null;
+                return current != null;
             }
 
             @Override
             public Task next() {
-                if(current == null){
+                if (current == null) {
                     throw new NoSuchElementException();
                 }
                 Task toReturn = current.getStoredTask();
                 current = current.getNext();
                 return toReturn;
+            }
+
+            @Override
+            public void remove() {
+                if (current == null) {
+                    throw new IllegalStateException();
+                }
+                LinkedTaskList.this.remove(current.getStoredTask());
+
             }
         };
     }

@@ -24,9 +24,10 @@ public class Main {
 
         System.out.println(list);
 //        System.out.println(list.getTask(2));
-        for(Task task: list){
-            System.out.println(task.toString()+'\n');
+        for(Task task: list) {
+            System.out.println(task.toString() + '\n');
         }
+
 //        System.out.println("remove status: "+list.remove(task2));
 
 //        System.out.println(list);

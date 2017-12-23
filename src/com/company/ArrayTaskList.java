@@ -82,14 +82,23 @@ public class ArrayTaskList extends TaskList {
         return new Iterator<Task>() {
 
             int currentIndex = 0;
+
             @Override
             public boolean hasNext() {
-                return tasklist[currentIndex]!=null&&currentIndex<tasklist.length;
+                return tasklist[currentIndex] != null && currentIndex < tasklist.length;
             }
 
             @Override
             public Task next() {
                 return tasklist[currentIndex++];
+            }
+
+            @Override
+            public void remove() {
+                if (tasklist[currentIndex] == null) {
+                    throw new IllegalStateException();
+                }
+                ArrayTaskList.this.remove(getTask(currentIndex));
             }
         };
     }
