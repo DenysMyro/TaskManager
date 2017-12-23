@@ -1,6 +1,7 @@
 package com.company;
 
-public abstract class TaskList {
+
+public abstract class TaskList implements Iterable<Task> {
 
     public abstract void add(Task task);
 

@@ -1,5 +1,7 @@
 package com.company;
 
+
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class LinkedTaskList extends TaskList {
@@ -130,5 +132,28 @@ public class LinkedTaskList extends TaskList {
                 "head = " + head + "\n" +
                 "tail = " + tail + "\n" +
                 "size = " + size;
+    }
+
+    @Override
+    public Iterator<Task> iterator() {
+        return new Iterator<Task>() {
+
+            Node current = head;
+
+            @Override
+            public boolean hasNext() {
+                return current!=null;
+            }
+
+            @Override
+            public Task next() {
+                if(current == null){
+                    throw new NoSuchElementException();
+                }
+                Task toReturn = current.getStoredTask();
+                current = current.getNext();
+                return toReturn;
+            }
+        };
     }
 }

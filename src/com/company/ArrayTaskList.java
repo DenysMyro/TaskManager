@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Iterator;
+
 public class ArrayTaskList extends TaskList {
 
     private Task[] tasklist = new Task[5];
@@ -73,5 +75,22 @@ public class ArrayTaskList extends TaskList {
             temp += tasklist[i].toString() + " ";
         }
         return temp;
+    }
+
+    @Override
+    public Iterator<Task> iterator() {
+        return new Iterator<Task>() {
+
+            int currentIndex = 0;
+            @Override
+            public boolean hasNext() {
+                return tasklist[currentIndex]!=null&&currentIndex<tasklist.length;
+            }
+
+            @Override
+            public Task next() {
+                return tasklist[currentIndex++];
+            }
+        };
     }
 }
