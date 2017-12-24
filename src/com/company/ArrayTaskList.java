@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class ArrayTaskList extends TaskList {
@@ -101,5 +102,29 @@ public class ArrayTaskList extends TaskList {
                 ArrayTaskList.this.remove(getTask(currentIndex));
             }
         };
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ArrayTaskList tasks = (ArrayTaskList) o;
+
+        if (size != tasks.size) return false;
+
+        for (int i =0; i<size; i++){
+            if(!this.getTask(i).equals(tasks.getTask(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(tasklist);
+        result = 31 * result + size;
+        return result;
     }
 }

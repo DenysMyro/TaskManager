@@ -165,4 +165,40 @@ public class LinkedTaskList extends TaskList {
             }
         };
     }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LinkedTaskList tasks = (LinkedTaskList) o;
+        Node node1 = head;
+        Node node2 = tasks.getHead();
+
+        if (size != tasks.size) return false;
+        if (head != null ? !head.equals(tasks.head) : tasks.head != null) {
+            return false;
+        }
+        if (tail != null ? !tail.equals(tasks.tail) : tasks.tail != null) {
+            return false;
+        }
+
+        while (node1.getStoredTask() != null) {
+            if (!node1.getStoredTask().equals(node2.getStoredTask())) {
+                return false;
+            }
+            node1 = node1.getNext();
+            node2 = node2.getNext();
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = head != null ? head.hashCode() : 0;
+        result = 31 * result + (tail != null ? tail.hashCode() : 0);
+        result = 31 * result + size;
+        return result;
+    }
 }

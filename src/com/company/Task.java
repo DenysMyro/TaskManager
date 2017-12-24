@@ -144,5 +144,35 @@ public class Task {
     public String toString() {
         return taskTitle;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Task task = (Task) o;
+
+        if (taskTime != task.taskTime) return false;
+        if (taskStartTime != task.taskStartTime) return false;
+        if (taskEndTime != task.taskEndTime) return false;
+        if (taskTimeInterval != task.taskTimeInterval) return false;
+        if (isRepeatable != task.isRepeatable) return false;
+        if (isActive != task.isActive) return false;
+        if (!taskTitle.equals(task.taskTitle)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = taskTitle.hashCode();
+        result = 31 * result + taskTime;
+        result = 31 * result + taskStartTime;
+        result = 31 * result + taskEndTime;
+        result = 31 * result + taskTimeInterval;
+        result = 31 * result + (isRepeatable ? 1 : 0);
+        result = 31 * result + (isActive ? 1 : 0);
+        return result;
+    }
 }
 
